@@ -1,6 +1,24 @@
-<h2>Add Note</h2>
-<form (ngSubmit)="saveNote()">
-  <input [(ngModel)]="note.title" name="title" placeholder="Title" required />
-  <textarea [(ngModel)]="note.content" name="content" placeholder="Content" required></textarea>
-  <button type="submit">Save</button>
-</form>
+<mat-card class="note-form-card">
+  <h2>{{ isEdit ? 'Edit Note' : 'Add Note' }}</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="note.title" name="title" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Content</mat-label>
+      <textarea matInput [(ngModel)]="note.content" name="content" required></textarea>
+    </mat-form-field>
+
+    <div class="buttons">
+      <button mat-raised-button color="primary" type="submit">
+        {{ isEdit ? 'Update Note' : 'Add Note' }}
+      </button>
+      <button mat-stroked-button color="warn" type="button" (click)="goBack()">
+        Back
+      </button>
+    </div>
+  </form>
+</mat-card>

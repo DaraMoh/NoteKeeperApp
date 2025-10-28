@@ -1,8 +1,13 @@
-<!-- src/app/components/notes-list/notes-list.component.html -->
-<h2>All Notes</h2>
-<ul>
-  <li *ngFor="let note of notes">
-    <strong>{{note.title}}</strong> - {{note.content}}
-    <button (click)="deleteNote(note.id)">Delete</button>
-  </li>
-</ul>
+<div class="notes-list-container" [@listAnimation]>
+  <h2>My Notes</h2>
+  <button mat-raised-button color="primary" (click)="addNewNote()">New Note</button>
+
+  <mat-card *ngFor="let note of notes" class="note-card">
+    <h3>{{ note.title }}</h3>
+    <p>{{ note.content }}</p>
+    <div class="note-buttons">
+      <button mat-stroked-button color="accent" (click)="editNote(note)">Edit</button>
+      <button mat-stroked-button color="warn" (click)="deleteNote(note.id!)">Delete</button>
+    </div>
+  </mat-card>
+</div>

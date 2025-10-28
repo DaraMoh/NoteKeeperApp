@@ -5,5 +5,6 @@ import { NoteFormComponent } from './components/note-form/note-form.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'notes', pathMatch: 'full' },
   { path: 'notes', component: NotesListComponent },
-  { path: 'add-note', component: NoteFormComponent }
+  { path: 'add-note', component: NoteFormComponent },
+  { path: 'edit/:id', component: NoteFormComponent }
 ];
