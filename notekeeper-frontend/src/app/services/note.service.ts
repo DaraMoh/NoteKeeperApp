@@ -12,7 +12,7 @@ export interface Note {
 
 @Injectable({ providedIn: 'root' })
 export class NoteService {
-  private apiUrl = 'https://localhost:5172/api/notes';
+  private apiUrl = 'http://localhost:5172/api/notes';
 
   constructor(private http: HttpClient) {}
 

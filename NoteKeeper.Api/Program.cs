@@ -14,16 +14,18 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Enable CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngularApp",
-        builder => builder
-            .WithOrigins("https://localhost:4200")
-            .AllowAnyHeader()
-            .AllowAnyMethod());
+    options.AddPolicy("AllowAngular",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
 });
 
 
 var app = builder.Build();
-app.UseCors("AllowAngularApp");
+app.UseCors("AllowAngular");
 
 if (app.Environment.IsDevelopment())
 {
